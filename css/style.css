@@ -2,6 +2,8 @@
 	width: 150px;
 	border: 1px solid black;
 	position: relative;
+	display: inline-block;
+	margin-right: 30px;
 }
 .player-name {
 	text-align: center;
