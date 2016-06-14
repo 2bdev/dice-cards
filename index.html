@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<title>Dice Cards</title>
+
+	<link href="css/style.css" rel="stylesheet"></link>
+</head>
+<body>
+
+	<h1>Dice and Cards</h1>
+
+	<div class="player-wrapper">
+		<h3 class="player-name">Player 1</h3>
+		<div class="total"></div>
+		<div class="results">
+			<div class="dice d1"></div>
+			<div class="dice d2"></div>
+			<div class="card"><span class="rank"></span><span class="suit"></span></div>
+		</div>
+		<button class="roll-draw">Roll and Draw</button>
+	</div>
+
+<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/playingCards.js"></script>
+<script type="text/javascript">
+var deck = new playingCards();
+
+$(".roll-draw").click(function() {
+	var $player = $(this).parent();
+
+	var d1 = rollDie();
+	var d2 = rollDie();
+	var card = deck.draw();
+	var total = d1 + d2 + card.getValue();
+
+	$player.find(".d1").text(d1);
+	$player.find(".d2").text(d2);
+	$player.find(".card .rank").text(card.rank);
+	$player.find(".card .suit").text(card.suit);
+	$player.find(".total").text(total);
+});
+
+
+function rollDie() {
+	var d = Math.floor(Math.random() * 6) + 1;
+	return d;
+}
+</script>
+</body>
+</html>

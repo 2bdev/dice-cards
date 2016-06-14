@@ -1,0 +1,48 @@
+.player-wrapper {
+	width: 150px;
+	border: 1px solid black;
+	position: relative;
+}
+.player-name {
+	text-align: center;
+	margin-top: 5px;
+}
+.roll-draw {
+	width: 80%;
+	margin: 25px auto 10px;
+	height: 30px;
+	display: block;
+}
+.total {
+	border: 1px solid black;
+	width: 50px;
+	text-align: center;
+	font-size: 30px;
+	margin: 0 auto;
+	min-height: 38px;
+}
+.results {
+	margin-top: 25px;
+	text-align: center;
+}
+.results div {
+	display: inline-block;
+	vertical-align: middle
+}
+.dice {
+	font-size: 22px;
+	min-width: 28px;
+	min-height: 28px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+.card {
+	font-size: 22px;
+	width: 30px;
+	border: 1px solid black;
+	height: 50px;
+	margin-left: 15px;
+}
+.card span {
+	display: block;
+}
