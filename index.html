@@ -46,6 +46,7 @@
 <script type="text/javascript" src="js/playingCards.js"></script>
 <script type="text/javascript">
 var deck = new playingCards();
+var discard = new Array();
 
 $(".roll-draw").click(function() {
 	var $player = $(this).parent();
@@ -53,14 +54,47 @@ $(".roll-draw").click(function() {
 	var d1 = rollDie();
 	var d2 = rollDie();
 	var card = deck.draw();
+
+	if(card == null) {
+		resetDeck();
+		card = deck.draw();
+	}
+
 	var total = d1 + d2 + card.getValue();
 
 	$player.find(".d1").text(d1);
 	$player.find(".d2").text(d2);
 	$player.find(".card .rank").text(card.rank);
-	$player.find(".card .suit").text(card.suit);
+	switch(card.suit) {
+		case "S":
+			$player.find(".card .suit").html("&spades;").css("color", "black");
+			break;
+
+		case "C":
+			$player.find(".card .suit").html("&clubs;").css("color", "black");
+			break;
+
+		case "H":
+			$player.find(".card .suit").html("&hearts;").css("color", "red");
+			break;
+
+		case "D":
+			$player.find(".card .suit").html("&diams;").css("color", "red");
+			break;
+	}
+
+	discard.push(card);	
+	
 	$player.find(".total").text(total);
 });
+
+function resetDeck() {
+	var count = discard.length;
+	for(i=0; i<count; i++) {
+		deck.addCard(discard[i]);
+	}
+	deck.shuffle(5);
+}
 
 function rollDie() {
 	var d = Math.floor(Math.random() * 6) + 1;
